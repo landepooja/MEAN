@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        class Player{
+            constructor(name){
+                this.name = name;
+                this.hand = [];
+            }
+
+            draw(deck){
+               let drawnCard  = deck.deal();
+               this.hand.push(drawnCard);
+            }
+
+            discard(){
+                return this.hand.pop();
+            }
+        }
+
+
+    class Card{
+        //constructor
+        constructor(suit, strVal, val){
+            //attributes
+            this.suit = suit;
+            this.strVal = strVal;
+            this.val = val;
+
+        }
+        show(){
+            console.log(`This cards is the ${this.strVal} of ${this.val}  of ${this.suit}`);
+        }
+    }
+
+    class Deck{
+        constructor(){
+            this.cards = [];
+            this.create();
+            this.shuffle();
+        }
+
+        //function
+        create(){
+            const suits  = ["hearts","diamonds", "spades", "clubs"];// since its constant changed var to consts
+            const stringVals = ["Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"];
+            for(let i=0; i<suits.length; i++){
+                for(let j=0; j<stringVals.length; j++){
+                    var card  =new Card(suits[i], stringVals[j], j+1);
+                    this.cards.push(card);
+                }
+            }
+        }
+
+        shuffle(){
+            for(let i=0; i<this.cards.length; i++){
+                let temp = this.card[i];
+                let randnum =  Math.floor(Math.random() * this.cards.length);// since we are getting out random number cards , shuffle the cards on between remaining cards
+                 this.cards[i] = this.cards[randnum];
+                this.cards[randnum] = temp;
+            
+            } //this is imp
+        }
+
+        reset(){
+            this.cards =[];
+            this.create();
+        }
+
+        deal(){//draw method in perosn
+            return this.cards.pop();
+
+        }
+
+    }
+    var deck1 = new Deck();
+
+    deck.shuffle();
+    deck.reset();
+    deck.deal();
+    console.log(deck.deal);
+    console.log(deck.cards.length);
+
+    console.log(deck.cards);
+    let B = new Player("B");
+    b.draw(deck1);
+
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
