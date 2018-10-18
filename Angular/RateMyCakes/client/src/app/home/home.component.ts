@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.getCakes();
+     this.getCakes();
+     this.resetCakes();
   }
 
   resetCakes() {
@@ -52,8 +53,15 @@ onSubmitCreate(){
   })
 }
 
-selectedCakes(cake){
+selectCakes(cake){
+  console.log(":-", cake);
   
+  this.selectedCake = cake;
 }
 
+
+dataFromChild(eventData){
+  //console.log("dataFromChild ", eventData)
+  this.getCakes();
+}
 }

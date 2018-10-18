@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { HttpService } from '../http.service';
 import { AppComponent } from '../app.component';
@@ -11,6 +11,7 @@ import { AppComponent } from '../app.component';
 export class RatingformComponent implements OnInit {
   newRating: any;
   @Input() currentCake: any;
+  @Output() emitter = new EventEmitter();
 
 
   constructor( private _httpService: HttpService, private main: AppComponent) { 
@@ -28,10 +29,15 @@ this.resetRating();
     }
   }
 
-makeRating(id){
-  console.log(id);
+makeRating(id: number){
+  console.log("cake id: ",id);
+  console.log("###### Component Rating: ", this.newRating.stars);
   let obs = this._httpService.makeRating(this.newRating, id);
-  obs.subscribe(data=> console.log(data));
+  obs.subscribe(data=> {
+    console.log("above emitter ",data)
+    this.emitter.emit("Check");
+  });
+
 }
 
 }

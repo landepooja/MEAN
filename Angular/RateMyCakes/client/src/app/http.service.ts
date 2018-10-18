@@ -19,7 +19,8 @@ export class HttpService {
     }
 
   makeRating(rating, id){
-    console.log("makeRating")
-    return this._http.post("/rate", rating);
+    console.log(" in makeRating services")
+    console.log("###### SErvices Rating: ", rating);
+    return this._http.put("/rate/"+id, rating); //put *********
   }
 }

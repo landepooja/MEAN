@@ -1,6 +1,6 @@
 <form>
     <label>Rate the cake</label>
-    <select>
+    <select name="stars" [(ngModel)]="newRating.stars">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -10,3 +10,5 @@
     <p> Comment: <input name="comment" [(ngModel)]="newRating.comment"></p>
     <input type="submit" (click)="makeRating(currentCake._id)">
   </form>
+
+  <!-- <h1>{{newRating.stars | json}}</h1>: <h1>{{newRating.comment|json}}</h1> -->

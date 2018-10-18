@@ -1,13 +1,22 @@
+<!-- .div {
+  width:100px;
+  min-height: 100px;
+overflow: hidden;
+} -->
+
 <form>
   <h2>Submit a cake to be rated</h2>
-<h3>Baker Name : <input type="text" [(ngModel)]="cake.name" name="name"></h3>
+<h3>Baker Name : <input type="text" [(ngModel)]="cake.name" name="name" ></h3>
+<!-- minlength="2" maxlength="10" #name="ngModel" -->
 <h3>Image Url : <input type="url" [(ngModel)]="cake.imageUrl" name="imageUrl"></h3>
 <button (click)="onSubmitCreate()"> Submit</button>
 </form>
-<p>{{cake.name | json}}</p>
+<!-- <p>{{name.errors | json}}</p> -->
 
-<img style="width: 100px;" *ngFor="let cake of allCakes" src="{{cake.imageUrl}}" (click)="selectedCakes(cake)"/>
-
-
+<div  *ngFor="let cake of allCakes">
+<img style="width: 100px;"  src="{{cake.imageUrl}}" (click)="selectCakes(cake)"/>
+<app-ratingform (emitter)="dataFromChild($event)" [currentCake]="cake"></app-ratingform><br><br> 
+<!-- {{cake|json}} -->
+</div>
 
 <app-cake *ngIf="selectedCake" [CakeToShow]="selectedCake"></app-cake>

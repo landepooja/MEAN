@@ -7,7 +7,7 @@ module.exports = function(app){
 
     app.post('/cakes', controller.createCake);
 
-    app.put('/rate/:id', controller.rateCake);
+    app.put('/rate/:id', controller.rateCake); //put*********
     
     return app;
 }

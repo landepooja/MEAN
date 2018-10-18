@@ -16,7 +16,8 @@ module.exports = {
         .catch(errs => console.log("Can not create Cake1") || res.json(errs))
     },
     rateCake: function(req, res){
-        Rating.findByIdAndUpdate(req.params.id, {$push: {rating:req.body}})
+        //console.log("Hitting Rate CAke . Rate: ${req.body}")
+        Cake.findByIdAndUpdate(req.params.id, {$push: {ratings:req.body}})
         .then(data => console.log("hitting rateCake") || res.json(data))
         .catch(errs => console.log("Can not rateCake Cake") || res.json(errs))
     },
